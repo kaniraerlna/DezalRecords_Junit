@@ -20,13 +20,16 @@
     <h:body>
         <div class="container">
             <div class="navbar navbar-inverse bg-warning" style="border: none">
-                <div class="navbar-brand fw-bold fs-1">
-                    <h:form class="d-inline">
+                <div class="navbar-brand fw-bold fs-1 justify-content-center">
+                    <h:form class="d-inline px-5 text-start">
                         <h:commandLink class="fs-3 text-decoration-none" action="/album_list.xhtml">
                             <i class="fa-solid fa-angles-left"/> Back
                         </h:commandLink>
                     </h:form>
-                    <font style="color: black; font-family: 'Silkscreen', cursive">Dezal Records</font>
+                    <font style="color: black; font-family: 'Silkscreen', cursive;"
+                          class="pt-5">
+                        Dezal Records
+                    </font>
                 </div>
             </div>
                 <div class="container px-3 vh-100 text-center">
@@ -39,17 +42,21 @@
                         <!--Login Form-->
                         <div class="card-body p-5">
                             <h1 class="fw-bold mb-5">Edit Album</h1>
+                            
+                            <!--Alert-->
+                                <div class="alert alert-danger text-start" role="alert">
+                                    <p class="fw-bold d-inline">
+                                        <i class="fa-solid fa-triangle-exclamation"/>
+                                        Error! 
+                                    </p> ID is not found.
+                                </div>
+                            
                             <h:form
                                 class="needs-validation text-start"
                                 p:novalidate="true"
                             >
                                 
-                                <!--Alert-->
-                                <div class="alert alert-danger" role="alert">
-                                    <p class="fw-bold d-inline">Error! </p> ID is not found.
-                                </div>
-                                
-                                 <div class="mb-4">
+                                <div class="mb-4">
                                     <h:outputLabel class="mb-2 text-muted" for="id" value="Album ID"/>  
                                     <h:inputText
                                         value="#{albums.idAlbum}"
@@ -62,8 +69,7 @@
                                     <h:commandButton
                                         action="#{albums.getbyID()}"
                                         class="btn btn-warning
-                                               w-25
-                                               mt-3
+                                               mb-4
                                                text-white"
                                         style="border-radius: 1rem;"
                                         value="Search by ID"
@@ -99,7 +105,7 @@
                                 </div>
                                 
                                 <div class="mb-4">
-                                    <h:outputLabel class="mb-2 mx-3 text-muted" for="type" value="Type"/>  
+                                    <h:outputLabel class="mb-2 pe-4 text-muted" for="type" value="Type"/>  
                                     <h:selectOneMenu
                                         value="#{albums.type}"
                                         id="type"
@@ -134,11 +140,11 @@
                                 </div>
                                 
                                 <!--Button-->
-                                <div class="d-inline">
+                                <div class="d-flex justify-content-between m-2">
                                     <h:commandButton
                                         action="#{albums.saveAlbum()}"
                                         type="submit"
-                                        class="btn btn-warning
+                                        class="btn btn-success
                                                w-25
                                                mt-3
                                                text-white"
@@ -158,7 +164,7 @@
                                     <h:commandButton
                                         action="#{albums.deleteAlbum()}"
                                         type="submit"
-                                        class="btn btn-warning
+                                        class="btn btn-danger
                                                w-25
                                                mt-3
                                                text-white"
@@ -168,42 +174,10 @@
                                 </div>
                             </h:form>
                         </div>
-                        
-                        <!--Footer-->
-                        <div class="card-footer py-3 border-0">
-                            <div class="text-center">
-                                See Album List
-                                <h:form class="d-inline">
-                                    <h:commandLink action="/album_list" value="Album List"/>
-                                </h:form>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <script>
-            // Example starter JavaScript for disabling form submissions if there are invalid fields
-            (function () {
-                'use strict'
-
-                // Fetch all the forms we want to apply custom Bootstrap validation styles to
-                var forms = document.querySelectorAll('.needs-validation')
-
-                // Loop over them and prevent submission
-                Array.prototype.slice.call(forms)
-                    .forEach(function (form) {
-                        form.addEventListener('submit', function (event) {
-                            if (!form.checkValidity()) {
-                                event.preventDefault()
-                                event.stopPropagation()
-                            }
-
-                            form.classList.add('was-validated')
-                        }, false)
-                   })
-            })()
-        </script>
     </h:body>
 </html>
 

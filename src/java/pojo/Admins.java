@@ -80,7 +80,8 @@ public class Admins  implements java.io.Serializable {
         this.password = password;
     }
 
-public void deleteAdmin(){
+    
+    public void deleteAdmin(){
         DAOAdmins admin = new DAOAdmins();
         admin.deleteAdmin(idAdmin);
         adminName = "";
@@ -104,7 +105,7 @@ public void deleteAdmin(){
         } catch (Exception e) {
             System.out.println(e);
         }
-        return "album_form_failed";
+        return "admin_form";
     }
     
     public List<Admins> getAllRecords(){

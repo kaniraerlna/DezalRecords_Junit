@@ -6,7 +6,7 @@
       xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Edit Album | Dezal Records</title>
+        <title>Edit Admin | Dezal Records</title>
         <h:outputStylesheet library="css" name="bootstrap.min.css"/>
         <script src="https://kit.fontawesome.com/021b758c3a.js" crossorigin="anonymous"/>
         <style>
@@ -20,13 +20,16 @@
     <h:body>
         <div class="container">
             <div class="navbar navbar-inverse bg-warning" style="border: none">
-                <div class="navbar-brand fw-bold fs-1">
-                    <h:form class="d-inline">
-                        <h:commandLink class="fs-3 text-decoration-none" action="/album_list.xhtml">
+                <div class="navbar-brand fw-bold fs-1 justify-content-center">
+                    <h:form class="d-inline px-5 text-start">
+                        <h:commandLink class="fs-3 text-decoration-none" action="/admin_list.xhtml">
                             <i class="fa-solid fa-angles-left"/> Back
                         </h:commandLink>
                     </h:form>
-                    <font style="color: black; font-family: 'Silkscreen', cursive">Dezal Records</font>
+                    <font style="color: black; font-family: 'Silkscreen', cursive;"
+                          class="pt-5">
+                        Dezal Records
+                    </font>
                 </div>
             </div>
                 <div class="container px-3 vh-100 text-center">
@@ -36,105 +39,64 @@
                     </div>
                     <div class="col-6 p-5">
                         
-                        <!--Login Form-->
                         <div class="card-body p-5">
-                            <h1 class="fw-bold mb-5">Search Album</h1>
+                            <h1 class="fw-bold mb-5">Edit Admin</h1>
                             <h:form
                                 class="text-start"
                                 p:novalidate="true"
                                 p:autocomplete="off"
                             >
                                  <div class="mb-4">
-                                    <h:outputLabel class="mb-2 text-muted" for="name" value="Album ID"/>  
+                                    <h:outputLabel class="mb-2 text-muted" for="name" value="Admin ID"/>  
                                     <h:inputText
-                                        value="#{albums.idAlbum}"
+                                        value="#{admins.idAdmin}"
                                         id="id"
                                         class="form-control input-focus"
                                     />
                                 </div>
                                 
-                                
                                 <div class="d-flex justify-content-center">
                                     <h:commandButton
-                                        action="#{albums.getbyIDAlbum()}"
+                                        action="#{admins.getbyID()}"
                                         class="btn btn-warning
-                                               w-25
-                                               mt-3
+                                               mb-4
                                                text-white"
                                         style="border-radius: 1rem;"
                                         value="Search by ID"
                                     />
                                 </div>
                                 
-                                <h1 class="fw-bold mb-5">Order Form</h1>
                                 <div class="mb-4">
-                                    <h:outputLabel class="mb-2 text-muted" for="name" value="Amount"/>  
+                                    <h:outputLabel class="mb-2 text-muted" for="name" value="Name"/>  
                                     <h:inputText
-                                        value="#{orders.amount}"
-                                        id="amount"
-                                        p:type="number"
+                                        value="#{admins.adminName}"
+                                        id="name"
                                         class="form-control input-focus"
-                                        p:min="1"
                                     />
                                 </div>
                                 
                                 <div class="mb-4">
-                                    <h:outputLabel class="mb-2 text-muted" for="name" value="Price"/>  
+                                    <h:outputLabel class="mb-2 text-muted" for="name" value="Email"/>  
                                     <h:inputText
-                                        value="#{orders.price}"
-                                        id="price"
+                                        value="#{admins.email}"
+                                        id="email"
                                         class="form-control input-focus"
-                                        disabled="true"
                                     />
                                 </div>
                                 
                                 <div class="mb-4">
-                                    <h:outputLabel class="mb-2 text-muted" for="name" value="Total Price"/>  
+                                    <h:outputLabel class="mb-2 text-muted" for="name" value="Password"/>  
                                     <h:inputText
-                                        value="#{orders.totalPrice}"
-                                        id="totalprice"
-                                        p:type="number"
+                                        value="#{admins.password}"
+                                        id="password"
                                         class="form-control input-focus"
-                                        
-                                    />
-                                </div>
-                                
-                                <div class="mb-4">
-                                    <h:outputLabel class="mb-2 text-muted" for="name" value="ID Album"/>  
-                                    <h:inputText
-                                        value="#{orders.idAlbum}"
-                                        id="idAlbm"
-                                        p:type="number"
-                                        class="form-control input-focus"
-                                        disabled="true"
-                                    />
-                                </div>
-                                
-                                <div class="mb-4">
-                                    <h:outputLabel class="mb-2 text-muted" for="name" value="ID Admin"/>  
-                                    <h:inputText
-                                        value="#{orders.idAdmin}"
-                                        id="IDAdmin"
-                                        p:type="number"
-                                        class="form-control input-focus"
-                                        disabled="true"
                                     />
                                 </div>
                                 
                                 <!--Button-->
-                                <div class="d-inline">
+                                <div class="d-flex justify-content-between m-2">
                                     <h:commandButton
-                                        action="#{orders.saveOrder()}"
-                                        type="submit"
-                                        class="btn btn-warning
-                                               w-25
-                                               mt-3
-                                               text-white"
-                                        style="border-radius: 1rem;"
-                                        value="Add"
-                                        />
-                                    <h:commandButton
-                                        action="#{orders.updateOrder()}"
+                                        action="#{admins.updateAdmin()}"
                                         type="submit"
                                         class="btn btn-warning
                                                w-25
@@ -144,9 +106,9 @@
                                         value="Edit"
                                         />
                                     <h:commandButton
-                                        action="#{orders.deleteOrder()}"
+                                        action="#{admins.deleteAdmin()}"
                                         type="submit"
-                                        class="btn btn-warning
+                                        class="btn btn-danger
                                                w-25
                                                mt-3
                                                text-white"
@@ -156,20 +118,9 @@
                                 </div>
                             </h:form>
                         </div>
-                        
-                        <!--Footer-->
-                        <div class="card-footer py-3 border-0">
-                            <div class="text-center">
-                                See Order List
-                                <h:form class="d-inline">
-                                    <h:commandLink action="/order_list" value="Order List"/>
-                                </h:form>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </h:body>
 </html>
-

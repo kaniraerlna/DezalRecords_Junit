@@ -4,7 +4,7 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Album List | Dezal Records</title>
+        <title>Admin List | Dezal Records</title>
         <h:outputStylesheet library="css" name="bootstrap.min.css"/>
         <script src="https://kit.fontawesome.com/021b758c3a.js" crossorigin="anonymous"/>
         <style>
@@ -30,49 +30,37 @@
             </div>
         
             <div class="row justify-content-center">
-                <div class="col-sm-12 col-md-9 px-5">
-                    <h2 class="mt-5 mb-4 fw-bold fs-1 text-center text-warning">Album List</h2>
+                <div class="col-sm-12 col-md-8 px-5">
+                    <h2 class="mt-5 mb-4 fw-bold fs-1 text-center text-warning">Admin List</h2>
                     <h:form class="d-inline">
                         <h:commandButton
                             value="Edit List"
-                            action="/album_form.xhtml"
+                            action="/admin_form.xhtml"
                             class="btn btn-primary text-white"
                             type="submit"
                         />
                     </h:form>
                     <div class="table-responsive mt-4 tableFixHead">
                         <h:dataTable
-                            value="#{albums.getAllRecords()}"
-                            var="albm"
+                            value="#{admins.getAllRecords()}"
+                            var="adm"
                             class="table table-striped table-hover"
                         >
                             <h:column>
                                 <f:facet name="header">ID</f:facet>
-                                #{albm.idAlbum}
+                                #{adm.idAdmin}
                             </h:column>
                             <h:column>
-                                <f:facet name="header">Album</f:facet>
-                                #{albm.albumName}
+                                <f:facet name="header">Name</f:facet>
+                                #{adm.adminName}
                             </h:column>
                             <h:column>
-                                <f:facet name="header">Artist</f:facet>
-                                #{albm.artist}
+                                <f:facet name="header">Email</f:facet>
+                                #{adm.email}
                             </h:column>
                             <h:column>
-                                <f:facet name="header">Years</f:facet>
-                                #{albm.years}
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">Type</f:facet>
-                                #{albm.type}
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">Price</f:facet>
-                                #{albm.price}
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">Stock</f:facet>
-                                #{albm.stock}
+                                <f:facet name="header">Password</f:facet>
+                                #{adm.password}
                             </h:column>
                         </h:dataTable>
                     </div>
@@ -110,4 +98,3 @@
         </div>
     </h:body>
 </html>
-

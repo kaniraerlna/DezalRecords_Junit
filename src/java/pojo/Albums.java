@@ -73,7 +73,7 @@ public class Albums  implements java.io.Serializable {
     public void updateAlbum(){
         DAOAlbums album = new DAOAlbums();
         album.updateAlbum(this);
-        idAlbum = 0;
+        albumName = "";
         artist = "";
         price = 0;
         stock = 0;
