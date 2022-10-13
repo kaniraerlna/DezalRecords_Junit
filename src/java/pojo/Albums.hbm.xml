@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 11, 2022 1:20:50 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="pojo.Albums" table="albums" catalog="dezalrecords_test1" optimistic-lock="version">
+        <id name="idAlbum" type="java.lang.Integer">
+            <column name="id_album" />
+            <generator class="identity" />
+        </id>
+        <property name="albumName" type="string">
+            <column name="album_name" length="200" not-null="true" />
+        </property>
+        <property name="artist" type="string">
+            <column name="artist" length="200" />
+        </property>
+        <property name="years" type="string">
+            <column name="years" length="4" />
+        </property>
+        <property name="type" type="string">
+            <column name="type" length="50" />
+        </property>
+        <property name="price" type="java.lang.Integer">
+            <column name="price" />
+        </property>
+        <property name="stock" type="java.lang.Integer">
+            <column name="stock" />
+        </property>
+    </class>
+</hibernate-mapping>

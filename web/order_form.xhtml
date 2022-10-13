@@ -1,0 +1,175 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Edit Album | Dezal Records</title>
+        <h:outputStylesheet library="css" name="bootstrap.min.css"/>
+        <script src="https://kit.fontawesome.com/021b758c3a.js" crossorigin="anonymous"/>
+        <style>
+            @import url('https://fonts.googleapis.com/css?family=Poppins|Audiowide|Ubuntu|Silkscreen');
+            
+            * {
+                font-family: 'Poppins', sans-serif;
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <div class="container">
+            <div class="navbar navbar-inverse bg-warning" style="border: none">
+                <div class="navbar-brand fw-bold fs-1">
+                    <h:form class="d-inline">
+                        <h:commandLink class="fs-3 text-decoration-none" action="/album_list.xhtml">
+                            <i class="fa-solid fa-angles-left"/> Back
+                        </h:commandLink>
+                    </h:form>
+                    <font style="color: black; font-family: 'Silkscreen', cursive">Dezal Records</font>
+                </div>
+            </div>
+                <div class="container px-3 vh-100 text-center">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-6">
+                        <h:graphicImage value="resources/img/taylor.jpg" alt="cover" width="400"/>  
+                    </div>
+                    <div class="col-6 p-5">
+                        
+                        <!--Login Form-->
+                        <div class="card-body p-5">
+                            <h1 class="fw-bold mb-5">Search Album</h1>
+                            <h:form
+                                class="text-start"
+                                p:novalidate="true"
+                                p:autocomplete="off"
+                            >
+                                 <div class="mb-4">
+                                    <h:outputLabel class="mb-2 text-muted" for="name" value="Album ID"/>  
+                                    <h:inputText
+                                        value="#{albums.idAlbum}"
+                                        id="id"
+                                        class="form-control input-focus"
+                                    />
+                                </div>
+                                
+                                
+                                <div class="d-flex justify-content-center">
+                                    <h:commandButton
+                                        action="#{albums.getbyIDAlbum()}"
+                                        class="btn btn-warning
+                                               w-25
+                                               mt-3
+                                               text-white"
+                                        style="border-radius: 1rem;"
+                                        value="Search by ID"
+                                    />
+                                </div>
+                                
+                                <h1 class="fw-bold mb-5">Order Form</h1>
+                                <div class="mb-4">
+                                    <h:outputLabel class="mb-2 text-muted" for="name" value="Amount"/>  
+                                    <h:inputText
+                                        value="#{orders.amount}"
+                                        id="amount"
+                                        p:type="number"
+                                        class="form-control input-focus"
+                                        p:min="1"
+                                    />
+                                </div>
+                                
+                                <div class="mb-4">
+                                    <h:outputLabel class="mb-2 text-muted" for="name" value="Price"/>  
+                                    <h:inputText
+                                        value="#{orders.price}"
+                                        id="price"
+                                        class="form-control input-focus"
+                                        disabled="true"
+                                    />
+                                </div>
+                                
+                                <div class="mb-4">
+                                    <h:outputLabel class="mb-2 text-muted" for="name" value="Total Price"/>  
+                                    <h:inputText
+                                        value="#{orders.totalPrice}"
+                                        id="totalprice"
+                                        p:type="number"
+                                        class="form-control input-focus"
+                                        
+                                    />
+                                </div>
+                                
+                                <div class="mb-4">
+                                    <h:outputLabel class="mb-2 text-muted" for="name" value="ID Album"/>  
+                                    <h:inputText
+                                        value="#{orders.idAlbum}"
+                                        id="idAlbm"
+                                        p:type="number"
+                                        class="form-control input-focus"
+                                        disabled="true"
+                                    />
+                                </div>
+                                
+                                <div class="mb-4">
+                                    <h:outputLabel class="mb-2 text-muted" for="name" value="ID Admin"/>  
+                                    <h:inputText
+                                        value="#{orders.idAdmin}"
+                                        id="IDAdmin"
+                                        p:type="number"
+                                        class="form-control input-focus"
+                                        disabled="true"
+                                    />
+                                </div>
+                                
+                                <!--Button-->
+                                <div class="d-inline">
+                                    <h:commandButton
+                                        action="#{orders.saveOrder()}"
+                                        type="submit"
+                                        class="btn btn-warning
+                                               w-25
+                                               mt-3
+                                               text-white"
+                                        style="border-radius: 1rem;"
+                                        value="Add"
+                                        />
+                                    <h:commandButton
+                                        action="#{orders.updateOrder()}"
+                                        type="submit"
+                                        class="btn btn-warning
+                                               w-25
+                                               mt-3
+                                               text-white"
+                                        style="border-radius: 1rem;"
+                                        value="Edit"
+                                        />
+                                    <h:commandButton
+                                        action="#{orders.deleteOrder()}"
+                                        type="submit"
+                                        class="btn btn-warning
+                                               w-25
+                                               mt-3
+                                               text-white"
+                                        style="border-radius: 1rem;"
+                                        value="Delete"
+                                        />
+                                </div>
+                            </h:form>
+                        </div>
+                        
+                        <!--Footer-->
+                        <div class="card-footer py-3 border-0">
+                            <div class="text-center">
+                                See Order List
+                                <h:form class="d-inline">
+                                    <h:commandLink action="/order_list" value="Order List"/>
+                                </h:form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </h:body>
+</html>
+
