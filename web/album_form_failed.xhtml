@@ -43,26 +43,18 @@
                         <div class="card-body p-5">
                             <h1 class="fw-bold mb-5">Edit Album</h1>
                             
-                            <!--Alert-->
-                                <div class="alert alert-danger text-start" role="alert">
-                                    <p class="fw-bold d-inline">
-                                        <i class="fa-solid fa-triangle-exclamation"/>
-                                        Error! 
-                                    </p> ID is not found.
-                                </div>
-                            
                             <h:form
                                 class="needs-validation text-start"
                                 p:novalidate="true"
                             >
-                                
                                 <div class="mb-4">
                                     <h:outputLabel class="mb-2 text-muted" for="id" value="Album ID"/>  
                                     <h:inputText
                                         value="#{albums.idAlbum}"
                                         id="id"
-                                        class="form-control input-focus"
+                                        class="form-control input-focus is-invalid"
                                     />
+                                    <div class="invalid-feedback">Album ID doesn't exist!</div>
                                 </div>
                                 
                                 <div class="d-flex justify-content-center">
@@ -125,6 +117,7 @@
                                         id="price"
                                         p:type="number"
                                         class="form-control input-focus"
+                                        p:min="1"
                                     />
                                 </div>
                                 
@@ -170,6 +163,18 @@
                                                text-white"
                                         style="border-radius: 1rem;"
                                         value="Delete"
+                                        />
+                                </div>
+                                <div class="m-2">
+                                    <h:commandButton
+                                        action="#{albums.resetAlbum()}"
+                                        type="submit"
+                                        class="btn btn-primary
+                                               w-100
+                                               mt-3
+                                               text-white"
+                                        style="border-radius: 1rem;"
+                                        value="Reset"
                                         />
                                 </div>
                             </h:form>

@@ -47,6 +47,5 @@ Contributor(s):
     <property name="hibernate.connection.username">root</property>
     <mapping resource="pojo/Admins.hbm.xml"/>
     <mapping resource="pojo/Albums.hbm.xml"/>
-    <mapping resource="pojo/Orders.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

@@ -97,4 +97,19 @@ public class DAOAlbums {
             
         }
     }
+    
+    public void resetAlbum(Integer idAlbum)
+   {
+       Transaction trans = null;
+       Session session = DezalRecordsUtil.getSessionFactory().openSession();
+       
+       try{
+           trans = session.beginTransaction();
+           Albums album = (Albums) session.load(Albums.class, new Integer(idAlbum));
+           session.clear();
+           trans.commit();
+       }catch(Exception e){
+           System.out.println(e);
+       }
+   }
 }

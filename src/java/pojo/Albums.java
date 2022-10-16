@@ -2,7 +2,6 @@ package pojo;
 // Generated Oct 11, 2022 1:20:50 PM by Hibernate Tools 4.3.1
 
 import DAO.DAOAlbums;
-import DAO.DAOLogin;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 
@@ -61,6 +60,13 @@ public class Albums  implements java.io.Serializable {
         } catch (Exception e) {
             System.out.println(e);
         }
+        
+        albumName = "";
+        artist = "";
+        price = 0;
+        stock = 0;
+        type = "";
+        years = "";
         return "album_form_failed";
     }
     
@@ -73,6 +79,7 @@ public class Albums  implements java.io.Serializable {
     public void updateAlbum(){
         DAOAlbums album = new DAOAlbums();
         album.updateAlbum(this);
+        idAlbum = 0;
         albumName = "";
         artist = "";
         price = 0;
@@ -81,6 +88,19 @@ public class Albums  implements java.io.Serializable {
         years = "";
     }
      
+    public String resetAlbum(){
+        DAOAlbums album = new DAOAlbums();
+        album.resetAlbum(idAlbum);
+        idAlbum = 0;
+        albumName = "";
+        artist = "";
+        price = 0;
+        stock = 0;
+        type = "";
+        years = "";
+        
+        return "album_form";
+    }
      
     public Albums() {
     }

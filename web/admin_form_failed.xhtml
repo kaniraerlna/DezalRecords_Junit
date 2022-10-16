@@ -42,7 +42,7 @@
                         <div class="card-body p-5">
                             <h1 class="fw-bold mb-5">Edit Admin</h1>
                             <h:form
-                                class="text-start"
+                                class="needs-validation text-start"
                                 p:novalidate="true"
                                 p:autocomplete="off"
                             >
@@ -51,8 +51,9 @@
                                     <h:inputText
                                         value="#{admins.idAdmin}"
                                         id="id"
-                                        class="form-control input-focus"
+                                        class="form-control input-focus is-invalid"
                                     />
+                                    <div class="invalid-feedback">Admin ID doesn't exist!</div>
                                 </div>
                                 
                                 <div class="d-flex justify-content-center">

@@ -2,7 +2,6 @@ package pojo;
 // Generated Oct 11, 2022 1:20:50 PM by Hibernate Tools 4.3.1
 
 import DAO.DAOAdmins;
-import DAO.DAOLogin;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 
@@ -26,7 +25,7 @@ public class Admins  implements java.io.Serializable {
     }
 
     public String loginValidation(){
-        DAOLogin uDao = new DAOLogin();
+        DAOAdmins uDao = new DAOAdmins();
         List<Admins> ad = uDao.getBy(email, password);
         try {
             if (ad != null) {
@@ -41,7 +40,7 @@ public class Admins  implements java.io.Serializable {
     }
     
     public String save_admin() {
-        DAOLogin add = new DAOLogin();
+        DAOAdmins add = new DAOAdmins();
         return add.add_admin(this);
     }
     
@@ -105,7 +104,12 @@ public class Admins  implements java.io.Serializable {
         } catch (Exception e) {
             System.out.println(e);
         }
-        return "admin_form";
+        
+        adminName = "";
+        email = "";
+        password = "";
+        idAdmin = 0;
+        return "admin_form_failed";
     }
     
     public List<Admins> getAllRecords(){
