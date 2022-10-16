@@ -3,6 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:b="http://bootsfaces.net/ui"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
@@ -41,6 +42,8 @@
                         
                         <div class="card-body p-5">
                             <h1 class="fw-bold mb-5">Edit Admin</h1>
+                            
+                            <!--Search by ID-->
                             <h:form
                                 class="text-start"
                                 p:novalidate="true"
@@ -65,13 +68,19 @@
                                         value="Search by ID"
                                     />
                                 </div>
-                                
+                            </h:form>
+                            
+                            <h:form
+                                class="text-start"
+                            >
                                 <div class="mb-4">
+                                    <h:inputHidden class="form-control col-8" value="#{admins.idAdmin}"/>
                                     <h:outputLabel class="mb-2 text-muted" for="name" value="Name"/>  
                                     <h:inputText
                                         value="#{admins.adminName}"
                                         id="name"
                                         class="form-control input-focus"
+                                        a:maxlength="200"
                                     />
                                 </div>
                                 
@@ -80,26 +89,30 @@
                                     <h:inputText
                                         value="#{admins.email}"
                                         id="email"
+                                        p:type="email"
                                         class="form-control input-focus"
+                                        a:placeholder="example@gmail.com"
                                     />
                                 </div>
                                 
                                 <div class="mb-4">
-                                    <h:outputLabel class="mb-2 text-muted" for="name" value="Password"/>  
+                                    <h:outputLabel class="mb-2 text-muted" for="name" value="Password (must be 5-10 characters)"/>  
                                     <h:inputText
                                         value="#{admins.password}"
                                         id="password"
                                         class="form-control input-focus"
+                                        a:maxlength="10"
+                                        a:minlength="5"
                                     />
                                 </div>
                                 
                                 <!--Button-->
-                                <div class="d-flex justify-content-between m-2">
+                                <div class="d-flex m-2">
                                     <h:commandButton
                                         action="#{admins.updateAdmin()}"
                                         type="submit"
                                         class="btn btn-warning
-                                               w-25
+                                               w-50
                                                mt-3
                                                text-white"
                                         style="border-radius: 1rem;"
@@ -109,11 +122,24 @@
                                         action="#{admins.deleteAdmin()}"
                                         type="submit"
                                         class="btn btn-danger
-                                               w-25
+                                               w-50
                                                mt-3
+                                               mx-2
                                                text-white"
                                         style="border-radius: 1rem;"
                                         value="Delete"
+                                        />
+                                </div>
+                                <div class="m-2">
+                                    <h:commandButton
+                                        action="#{admins.resetAdmin()}"
+                                        type="submit"
+                                        class="btn btn-primary
+                                               w-100
+                                               mt-3
+                                               text-white"
+                                        style="border-radius: 1rem;"
+                                        value="Reset"
                                         />
                                 </div>
                             </h:form>

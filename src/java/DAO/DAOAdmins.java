@@ -115,4 +115,19 @@ public class DAOAdmins {
         }
         return lAdmin;
     }
+    
+    public void resetAdmin(Integer idAd)
+    {
+       Transaction trans = null;
+       Session session = DezalRecordsUtil.getSessionFactory().openSession();
+       
+       try{
+           trans = session.beginTransaction();
+           Admins admin = (Admins) session.load(Admins.class, new Integer(idAd));
+           session.clear();
+           trans.commit();
+       }catch(Exception e){
+           System.out.println(e);
+       }
+    }
 }

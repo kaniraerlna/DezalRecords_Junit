@@ -99,7 +99,7 @@ public class DAOAlbums {
     }
     
     public void resetAlbum(Integer idAlbum)
-   {
+    {
        Transaction trans = null;
        Session session = DezalRecordsUtil.getSessionFactory().openSession();
        
@@ -111,5 +111,5 @@ public class DAOAlbums {
        }catch(Exception e){
            System.out.println(e);
        }
-   }
+    }
 }

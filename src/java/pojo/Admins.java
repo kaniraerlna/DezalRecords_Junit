@@ -108,7 +108,6 @@ public class Admins  implements java.io.Serializable {
         adminName = "";
         email = "";
         password = "";
-        idAdmin = 0;
         return "admin_form_failed";
     }
     
@@ -127,7 +126,17 @@ public class Admins  implements java.io.Serializable {
         idAdmin = 0;
     }
 
-
+    public String resetAdmin(){
+        DAOAdmins admin = new DAOAdmins();
+        admin.resetAdmin(idAdmin);
+        idAdmin = 0;
+        adminName = "";
+        email = "";
+        password = "";
+        idAdmin = 0;
+        
+        return "admin_form";
+    }
 }
 
 
