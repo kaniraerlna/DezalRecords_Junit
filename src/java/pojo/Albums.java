@@ -28,6 +28,13 @@ public class Albums  implements java.io.Serializable {
     public void saveAlbum(){
         DAOAlbums album = new DAOAlbums();
         album.addAlbum(this);
+        idAlbum = 0;
+        albumName = "";
+        artist = "";
+        price = 0;
+        stock = 0;
+        type = "";
+        years = "";
     }
     
     public String deleteAlbum(){
