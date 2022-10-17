@@ -50,10 +50,11 @@
                                 p:autocomplete="off"
                             >
                                  <div class="mb-4">
-                                    <h:outputLabel class="mb-2 text-muted" for="name" value="Admin ID"/>  
+                                    <h:outputLabel class="mb-2 text-muted" for="id" value="Admin ID"/>  
                                     <h:inputText
                                         value="#{admins.idAdmin}"
                                         id="id"
+                                        p:type="number"
                                         class="form-control input-focus is-invalid"
                                     />
                                     <div class="invalid-feedback">Admin ID doesn't exist!</div>
@@ -86,7 +87,7 @@
                                 </div>
                                 
                                 <div class="mb-4">
-                                    <h:outputLabel class="mb-2 text-muted" for="name" value="Email"/>  
+                                    <h:outputLabel class="mb-2 text-muted" for="email" value="Email"/>  
                                     <h:inputText
                                         value="#{admins.email}"
                                         id="email"
@@ -97,7 +98,7 @@
                                 </div>
                                 
                                 <div class="mb-4">
-                                    <h:outputLabel class="mb-2 text-muted" for="name" value="Password (must be 5-10 characters)"/>  
+                                    <h:outputLabel class="mb-2 text-muted" for="password" value="Password (must be 5-10 characters)"/>  
                                     <h:inputText
                                         value="#{admins.password}"
                                         id="password"

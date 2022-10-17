@@ -78,7 +78,7 @@ public class Albums  implements java.io.Serializable {
         return lAlbum;
     }
     
-    public void updateAlbum(){
+    public String updateAlbum(){
         DAOAlbums album = new DAOAlbums();
         album.updateAlbum(this);
         idAlbum = 0;
@@ -88,6 +88,8 @@ public class Albums  implements java.io.Serializable {
         stock = 0;
         type = "";
         years = "";
+        
+        return "album_list";
     }
      
     public String resetAlbum(){
