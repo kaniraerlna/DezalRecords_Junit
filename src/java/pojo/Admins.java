@@ -117,13 +117,15 @@ public class Admins  implements java.io.Serializable {
         return lAdmin;
     }
     
-    public void updateAdmin(){
+    public String updateAdmin(){
         DAOAdmins admin = new DAOAdmins();
         admin.updateAdmin(this);
         adminName = "";
         email = "";
         password = "";
         idAdmin = 0;
+        
+        return "admin_list";
     }
 
     public String resetAdmin(){
@@ -133,7 +135,6 @@ public class Admins  implements java.io.Serializable {
         adminName = "";
         email = "";
         password = "";
-        idAdmin = 0;
         
         return "admin_form";
     }
