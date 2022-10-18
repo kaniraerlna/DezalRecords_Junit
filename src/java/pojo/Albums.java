@@ -35,12 +35,6 @@ public class Albums  implements java.io.Serializable {
     public String deleteAlbum(){
         DAOAlbums album = new DAOAlbums();
         album.deleteAlbum(idAlbum);
-        albumName = "";
-        artist = "";
-        price = 0;
-        stock = 0;
-        type = "";
-        years = "";
         
         return "album_list";
     }
@@ -81,13 +75,6 @@ public class Albums  implements java.io.Serializable {
     public String updateAlbum(){
         DAOAlbums album = new DAOAlbums();
         album.updateAlbum(this);
-        idAlbum = 0;
-        albumName = "";
-        artist = "";
-        price = 0;
-        stock = 0;
-        type = "";
-        years = "";
         
         return "album_list";
     }

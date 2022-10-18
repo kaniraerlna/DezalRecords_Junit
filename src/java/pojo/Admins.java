@@ -80,13 +80,11 @@ public class Admins  implements java.io.Serializable {
     }
 
     
-    public void deleteAdmin(){
+    public String deleteAdmin(){
         DAOAdmins admin = new DAOAdmins();
         admin.deleteAdmin(idAdmin);
-        adminName = "";
-        email = "";
-        password = "";
-        idAdmin = 0;
+        
+        return "admin_list";
     }
     
     public String getbyID(){
@@ -120,10 +118,6 @@ public class Admins  implements java.io.Serializable {
     public String updateAdmin(){
         DAOAdmins admin = new DAOAdmins();
         admin.updateAdmin(this);
-        adminName = "";
-        email = "";
-        password = "";
-        idAdmin = 0;
         
         return "admin_list";
     }
